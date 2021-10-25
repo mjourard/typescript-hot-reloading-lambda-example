@@ -11,12 +11,12 @@ services:
         - AWS_DEFAULT_REGION=us-east-1
         - SERVICES=lambda,apigateway,iam,cloudformation,sts,s3,cloudwatch,route53
         - MAIN_CONTAINER_NAME=typescript_local_lambda_localstack_main
-        - EDGE_PORT=4570
+        - EDGE_PORT=${EDGE_PORT:- 4570}
         - DEBUG=${DEBUG- 0}
         - IMAGE_NAME=localstack/localstack:0.12.18
         - DATA_DIR=/tmp/localstack/data
         - DOCKER_HOST=unix:///var/run/docker.sock
-        - HOST_TMP_FOLDER=${TMPDIR}localstack
+        - HOST_TMP_FOLDER=${TMPDIR:-/tmp/}localstack
         - LS_LOG=${LS_LOG- info}
         # docker-reuse forces lambda to act more production-like: the container is reused for subsequent calls
         - LAMBDA_EXECUTOR=docker-reuse
@@ -25,7 +25,7 @@ services:
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID- dev}
         - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY- dev}
     volumes:
-        - ".webpack:/tmp/localstack"
+        - "${TMPDIR:-/tmp/}localstack:/tmp/localstack"
         - "/var/run/docker.sock:/var/run/docker.sock"
 
 networks:

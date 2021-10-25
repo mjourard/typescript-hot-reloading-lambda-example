@@ -8,8 +8,8 @@
     "deploy": "sls deploy",
     "remove": "sls remove",
     "deploy:local": "SLS_DEBUG=* sls deploy --config serverless-local.yml --stage local",
-    "build": "webpack",
-    "build:watch": "echo 'TODO'",
+    "build": "sls package",
+    "build:watch": "nodemon -w src -e '.*' -x 'npm run build'",
     "env:up": "docker-compose up -d",
     "env:down": "docker-compose down"
   },
@@ -30,6 +30,7 @@
     "@types/aws-lambda": "^8.10.84",
     "@types/node": "^16.11.1",
     "@types/serverless": "^1.78.36",
+    "nodemon": "^2.0.14",
     "serverless": "^2.63.0",
     "serverless-localstack": "^0.4.35",
     "serverless-webpack": "^5.5.4",
