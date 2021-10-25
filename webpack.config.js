@@ -2,13 +2,6 @@ const path = require('path');
 const slsw = require('serverless-webpack');
 const nodeExternals = require('webpack-node-externals');
 
-const fileName = '[name].js';
-console.log({
-  entries: slsw.lib.entries,
-  webpack: slsw.lib.webpack,
-  filename: fileName
-});
-
 module.exports = {
   context: __dirname,
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
