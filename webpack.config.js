@@ -15,7 +15,7 @@ module.exports = {
   output: {
     libraryTarget: 'commonjs',
     path: path.join(__dirname, '.webpack'),
-    filename: fileName,
+    filename: '[name].js',
     clean: true,
     devtoolModuleFilenameTemplate: '[absolute-resource-path]'
   },
