@@ -6,7 +6,7 @@ services:
     networks:
         - typescript_local_lambda
     ports:
-        - "4566-4597:4566-4597"
+        - "4570:4570"
     environment:
         - AWS_DEFAULT_REGION=us-east-1
         - SERVICES=lambda,apigateway,iam,cloudformation,sts,s3,cloudwatch,route53
